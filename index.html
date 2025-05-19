@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Bank - ATM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="d-flex flex-column min-vh-100 body">
+
+    <header class="container-fluid text-white py-3 px-4 d-flex justify-content-between align-items-center shadow">
+        <h2 class="m-0">Pokemon Bank</h2>
+        <button class="btn btn-danger" onclick="location.href='login.html'">Salir</button>
+    </header>
+
+    
+    <main class="container text-center mt-5 pt-5">
+        <div class="row g-3 justify-content-center">
+
+            <div class="col-md-6 col-12">
+                <div class="acciones-container p-4 shadow-lg">
+                    <img src="assets/img/entrenadorPokemon.png" alt="entrenadorPokemon" class="img-fluid d-block mx-auto mt-2" style="width: 250px;">
+                    <h1 class="mt-3">Bienvenido, Entrenador</h1>
+                    <div class="usuario-info p-3 rounded my-3">
+                        <p>Cuenta: <span class="text-success fw-bold fs-20">Activa</span></p>
+                        <p><strong>Nombre:</strong> <span id="userName"></span></p>
+                        <p><strong>PIN:</strong> <span id="userPin"></span></p>
+                        <p><strong>Numero de cuenta:</strong> <span id="userAccount"></span></p>
+                        <p class="saldo-barra">Saldo Disponible: <strong id="userBalance"></strong></p>
+                    </div>
+                </div>
+            </div>
+
+ <!-- card donde estan todas las operacioes del ATM bank -->
+            <div class="col-md-6 col-12">
+                <div class="card-acciones text-white p-4 rounded shadow-lg text-center">
+                    <img src="assets/img/Poke_Ball_icon.svg" alt="Pokebola" class="img-fluid mx-auto d-block mb-3" style="width: 120px;">
+                    <h2 class="text-ligth mb-3">Operaciones</h2>
+                    <div class="row g-2 justify-content-center">
+                        <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <button class="accion-btn btn-lg w-100 d-flex align-items-center justify-content-center p-2" data-bs-toggle="modal" data-bs-target="#modalDeposito">
+                                <img src="assets/img/Pikachu.png" alt="PokemonDeposito" class="me-2 d-none d-lg-inline" style="width: 30px; height: 30px;"> Deposito
+                            </button>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <button class="accion-btn btn-lg w-100 d-flex align-items-center justify-content-center p-2 " data-bs-toggle="modal" data-bs-target="#modalRetiro">
+                                <img src="assets/img/charmander.png" alt="PokemonRetiro" class="me-2 d-none d-lg-inline" style="width: 30px; height: 30px;"> Retiro
+                            </button>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <button class="accion-btn btn-lg w-100 d-flex align-items-center justify-content-center p-2 " data-bs-toggle="modal" data-bs-target="#modalPagos">
+                                <img src="assets/img/bulbasaur.png" alt="Pokemon_Pago_de_Servicios" class="me-2 d-none d-lg-inline" style="width: 30px; height: 30px;"> Pago de Servicios
+                            </button>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12 mb-2">
+                            <button class="accion-btn btn-lg w-100 d-flex align-items-center justify-content-center p-2 " data-bs-toggle="modal" data-bs-target="#modalSaldo">
+                                <img src="assets/img/squirtle.png" alt="Pokemon_Consultar_Saldo" class="me-2 d-none d-lg-inline" style="width: 30px; height: 30px;"> Consultar Saldo
+                            </button>
+                        </div>
+                        <div class="col-12">
+                            <button class="accion-btn btn-lg w-100 d-flex align-items-center justify-content-center p-2 mx-auto " onclick="location.href='historial.html'">
+                                <img src="assets/img/Meowth.png" alt="PokemonHistorial" class="me-2 d-none d-lg-inline" style="width: 30px; height: 30px;"> Historial
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+    <!-- modal de deposito -->
+    <div class="modal fade" id="modalDeposito" tabindex="-1" aria-labelledby="modalDepositoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark">
+                <div class="modal-header border-primary">
+                    <h5 class="modal-title">Deposito</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="tipoCuenta" class="form-label fw-bold">Seleccione el tipo de cuenta:</label>
+                    <select class="form-control border-primary" id="tipoCuenta">
+                        <option value="propia">Cuenta Propia</option>
+                        <option value="tercero">Cuenta de Tercero</option>
+                    </select>
+                    <label for="montoDeposito" class="mt-2 form-label fw-bold">Ingrese el monto a depositar:</label>
+                    <input type="number" class="form-control border-primary" id="montoDeposito">
+                </div>
+                <div class="modal-footer border-primary">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btnModalDeposito">Depositar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal de retiro -->
+    <div class="modal fade" id="modalRetiro" tabindex="-1" aria-labelledby="modalRetiroLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-ligth">
+                <div class="modal-header border-primary">
+                    <h5 class="modal-title">Retiro</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="tipoRetiro" class="form-label fw-bold mt-2">Seleccione el tipo de retiro:</label>
+                    <select class="form-control border-primary" id="tipoRetiro">
+                        <option value="tarjeta">Con Tarjeta</option>
+                        <option value="sinTarjeta">Sin Tarjeta</option>
+                    </select>
+                    <label for="montoRetiro" class="form-label fw-bold mt-2">Ingrese el monto a retirar:</label>
+                    <input type="number" class="form-control border-primary" id="montoRetiro">
+                </div>
+                <div class="modal-footer border-primary">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btnModalRetiro">Retirar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- modal de pagos -->
+    <div class="modal fade" id="modalPagos" tabindex="-1" aria-labelledby="modalPagosLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content"> <div class="modal-header border-primary">
+                    <h5 class="modal-title">Pago de Servicios</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button> </div>
+                <div class="modal-body">
+                    <label for="tipoServicio" class="form-label fw-bold mt-2">Seleccione el servicio a pagar:</label>
+                    <select class="form-control border-primary" id="tipoServicio">
+                        <option value="energia">Energia Electrica</option>
+                        <option value="internet">Internet</option>
+                        <option value="telefonia">Telefonia</option>
+                        <option value="agua">Agua Potable</option>
+                    </select>
+                    <label for="montoPago" class="form-label fw-bold mt-2">Ingrese el monto a pagar:</label>
+                    <input type="number" class="form-control border-primary" id="montoPago" placeholder="Ej: 500">
+                </div>
+                <div class="modal-footer border-primary">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btnModalPagoServicios">Pagar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- modal de saldo disponible-->
+    <div class="modal fade" id="modalSaldo" tabindex="-1" aria-labelledby="modalSaldoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content"> <div class="modal-header border-primary">
+                    <h5 class="modal-title">Consultar Saldo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button> </div>
+                <div class="modal-body text-center">
+                    <p class="form-label fw-bold mt-2">Su saldo disponible es:</p>
+                    <h3 id="saldoModalInfo" class="text-light">$0.00</h3> </div>
+                <div class="modal-footer border-primary">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-4">
+        <p class="mb-1">&copy; 2025 Pokemon Bank. Todos los derechos reservados.</p>
+        <p class="mb-0">Sistema ATM.</p>
+    </footer>
+<!-- Enlaces a scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> <script src="assets/js/storage.js"></script> <script src="assets/js/main.js"></script>    </body>
+</html>

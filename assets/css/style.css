@@ -1,0 +1,107 @@
+/* estilos generales */
+.body{
+    background-color: #212529;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+   
+}
+header{
+    background-color: #1b1f22;
+
+}
+
+header h2{
+    color: #6EA8FE;
+}
+main{
+    flex-grow: 1;
+}
+/* diseño de las cards */
+.acciones-container {
+    background-color: #1b1f22;
+    border: 3px solid #343a40;
+    color: #DEE2E6;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.saldo-barra {
+    font-family: 'Courier New', monospace;
+    font-size: 1.4em;
+    background: linear-gradient(45deg, #ffcc00, #ff9900);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    color:#111111;
+}
+
+.card-acciones {
+    background-color: #1b1f22;
+    color: white;
+    border: 3px solid  #343a40;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(3, 18, 37, 0.8);
+}
+
+.accion-btn {
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.2em;
+    padding: 15px;
+    background: linear-gradient(45deg, #ffcc00, #ff9900);
+    border-radius: 15px;
+    border: 1px solid #242424 ;
+    color: #111111;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+    font-weight: bold;
+    flex-grow: 1;
+    
+}
+
+.accion-btn:hover {
+    border: 1px solid #6EA8FE;
+    color: #DEE2E6; 
+}
+
+.form-control{
+    background-color: #1b1f22!important;
+    color: #DEE2E6!important;
+}
+.icon-pokemon {
+    width: 40px;
+    height: 40px;
+}
+
+/* Estilos del Footer */
+.footer {
+    background-color: #1b1f22; 
+    color: #6EA8FE;            
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+    bottom: 0;                 
+    left: 0;
+    z-index: 1000;
+}
+
+/* estilos de los forms */
+
+.form-label {
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    color: #66a2fc;
+}
+
+
+.modal-content {
+    border-radius: 12px;
+    background: #1b1f22 !important; 
+}

@@ -1,0 +1,23 @@
+body {
+    background: url('/assets/img/background.png') no-repeat center center/cover;
+}
+.login-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    transition: transform 0.3s;
+}
+.login-card:hover {
+    transform: scale(1.05);
+}
+.pokemon-logo {
+    width: 120px;
+    display: block;
+    margin: 0 auto;
+}
+.btn-warning {
+    transition: background-color 0.3s, transform 0.3s;
+}
+.btn-warning:hover {
+    background-color: #ffcc00;
+    transform: scale(1.1);
+}

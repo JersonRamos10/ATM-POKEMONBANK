@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historial de Transacciones – Pokemon Bank</title>
+
+  <link rel="stylesheet" href="assets/css/historial.css"> <link rel="stylesheet" href="assets/css/style.css"> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="d-flex flex-column min-vh-100 bg-dark text-white">
+
+  <header class="w-100 py-3 px-4 d-flex justify-content-between align-items-center shadow">
+    <h2 class="m-0">Pokemon Bank</h2>
+    <button class="btn btn-danger" onclick="location.href='index.html'">Volver</button>
+  </header>
+
+  <div class="container text-center mt-4">
+    <div class="row justify-content-center g-3">
+      <div class="col-md-4 col-sm-12">
+        <div class="item deposito p-2 rounded border border-warning">
+          <span class="fw-bold text-warning">🟡 Depositos</span> -> Depositos realizados
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <div class="item retiro p-2 rounded border border-danger">
+          <span class="fw-bold text-danger">🔴 Retiros</span> -> Retiros realizados
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <div class="item pago p-2 rounded border border-info">
+          <span class="fw-bold text-info">🔵 Pagos</span> -> Pagos de servicios
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="m-5 textform">
+    <label for="filtroTipo" class="form-label text-white">Filtrar por tipo:</label>
+    <select class="form-control w-50 mx-auto" id="filtroTipo">
+      <option value="todas">Todas</option>
+      <option value="deposito">Depositos</option>
+      <option value="retiro">Retiros</option>
+      <option value="pago">Pagos de Servicios</option>
+    </select>
+  </div>
+<!-- main de la pagina de historial-->
+  <main>
+    <div class="historial-container">
+      <div id="listaTransacciones" class="d-grid gap-3">
+          </div>
+    </div>
+  </main>
+
+  <div class="text-center mt-4">
+    <button class="btn btn-pokemon" onclick="location.href='grafico.html'">
+      Ver analisis de transacciones
+    </button>
+  </div>
+
+  <footer class="footer mt-4">
+    <p class="mb-1">&copy; 2025 Pokemon Bank. Todos los derechos reservados.</p>
+    <p class="mb-0">Sistema ATM.</p>
+  </footer>
+
+
+  <!-- Enlaces a los scripts-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="assets/js/storage.js"></script> 
+  <script src="assets/js/historial.js"></script>
+
+</body>
+</html>
