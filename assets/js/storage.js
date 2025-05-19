@@ -1,5 +1,6 @@
 // storage.js
 
+// Claves utilizadas para guardar usuario y transacciones en localStorage
 const USUARIO_KEY = "pkb_usuario";
 const TRANS_KEY = "pkb_transacciones";
 
@@ -18,13 +19,15 @@ if (!localStorage.getItem(USUARIO_KEY)) {
 function obtenerUsuario() {
     return JSON.parse(localStorage.getItem(USUARIO_KEY));
 }
-
+// Guarda el objeto usuario en localStorage
 function guardarUsuario(usuario) {
     localStorage.setItem(USUARIO_KEY, JSON.stringify(usuario));
 }
 
 /* Funciones de acceso a transacciones */
+
 function obtenerTransacciones() {
+    // Retorna el historial de transacciones guardadas
     return JSON.parse(localStorage.getItem(TRANS_KEY)) || []; // Devuelve array vacío si no hay nada
 }
 
@@ -34,6 +37,7 @@ function guardarTransacciones(transacciones) {
 
 
 // Función para agregar transacciones
+// aca se registra una nueva transaccion, actualiza el saldo y guarda los cambios
 function agregarTransaccion(tipo, monto, servicio) {
     const transacciones = obtenerTransacciones();
     const usuario = obtenerUsuario();

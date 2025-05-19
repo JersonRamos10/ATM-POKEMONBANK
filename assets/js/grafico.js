@@ -1,9 +1,10 @@
 // assets/js/grafico.js
 
+// 
 document.addEventListener("DOMContentLoaded", function () {
     var ctx = document.getElementById('graficoTransacciones').getContext('2d');
 
-
+// Verifica si la funcion obtenerTransacciones esta disponible
     if (typeof obtenerTransacciones !== 'function') {
         console.error("La funcion obtenerTransacciones() de storage.js no esta disponible. Asegurate que storage.js este cargado antes que grafico.js.");
         
@@ -21,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let contadorRetiros = 0;
     let contadorPagos = 0;
 
-    // Iterar sobre las transacciones para contar cada tipo
+    // Itera sobre las transacciones para contar cada tipo
     transacciones.forEach(transaccion => {
         switch (transaccion.tipo) {
             case 'deposito':
@@ -40,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Datos para el grafico basados en las transacciones 
     const datosReales = [contadorDepositos, contadorRetiros, contadorPagos];
 
+    // Crea y muestra el grafico con Chart.js
     var transaccionesChart = new Chart(ctx, {
         type: 'bar', // Tipo de grafico
         data: {

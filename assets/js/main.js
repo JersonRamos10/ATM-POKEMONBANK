@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM cargado. Pokemon Bank ATM listo.");
 
     // --- FUNCION PARA GENERAR COMPROBANTE PDF ---
+
+    // Genera un archivo PDF con los detalles de una transacción
     function generarComprobantePDF(transaccion) {
         if (!transaccion) {
             console.error("No hay datos de transaccion para generar el PDF.");
@@ -17,9 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 Swal.fire("Error", "La libreria jsPDF no esta cargada.", "error");
                 return;
             }
+            
             const doc = new jsPDF();
             const usuario = obtenerUsuario();
-
+            
             let yPos = 20;
             const lineHeight = 7;
             const margin = 20;
@@ -81,11 +84,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // --- FUNCIONES DE LOGICA DE TRANSACCION ---
+
+    //funcion para realizar el deposito
     function realizarDeposito() {
         console.log("realizarDeposito llamada");
         const montoInput = document.getElementById("montoDeposito");
         const montoString = montoInput.value;
-
+  //Con el contraints se define las reglas de validacion para el formulario
         const constraints = {
             monto: {
                 presence: { message: "Por favor, ingrese un monto." },
@@ -131,12 +136,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
     // --- FUNCION PARA REALIZAR RETIROS ---
+    // Logica implementada para validar y ejecutar un retiro de dinero
     function realizarRetiro() {
         console.log("realizarRetiro llamada");
         const montoInput = document.getElementById("montoRetiro");
         const montoString = montoInput.value;
         const usuario = obtenerUsuario();
-
+    
+         //Con el contraints se define las reglas de validacion para el formulario
         const constraints = {
             monto: {
                 presence: { message: "Por favor, ingrese un monto." },
@@ -198,6 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const nombreServicio = servicioSelect.options[servicioSelect.selectedIndex].text;
         const usuario = obtenerUsuario();
 
+        //Con el contraints se define las reglas de validacion para el formulario
         const constraints = {
             monto: {
                 presence: { message: "Por favor, ingrese un monto." },
@@ -251,7 +259,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     
-
+    // esta funcion actualiza el saldo mostrado
     function actualizarSaldosUI() {
         const usuarioActualizado = obtenerUsuario();
         if (usuarioActualizado) {
@@ -316,14 +324,16 @@ document.addEventListener("DOMContentLoaded", function () {
                     background: '#212529',
                     color: "#6EA8FE",
                 });
-                document.getElementById("pin").value = ""; // Limpiar el PIN si el formato es incorrecto
+                document.getElementById("pin").value = ""; // Limpia el PIN si el formato es incorrecto
                 document.getElementById("pin").focus(); 
             }
         });
     }
 
+    //este bloque se ejecuta cuando se carga la pagina index.html(se esta dentro del sistema)
     if (window.location.pathname.includes("index.html")) {
-        const usuario = obtenerUsuario();
+        
+        const usuario = obtenerUsuario(); //recupera los datos del usuario del localStorage
         if (usuario) {
             document.getElementById("userName").textContent = usuario.nombre;
             document.getElementById("userPin").textContent = "****";
@@ -333,7 +343,7 @@ document.addEventListener("DOMContentLoaded", function () {
             Swal.fire({ title: "Error de Sesion", text: "No se encontraron datos de usuario. Seras redirigido al login.", icon: "error", confirmButtonText: "OK" })
                 .then(() => { window.location.href = "login.html"; });
         }
-
+        //activacion de los botones de los modales
         document.getElementById("btnModalDeposito")?.addEventListener("click", realizarDeposito);
         document.getElementById("btnModalRetiro")?.addEventListener("click", realizarRetiro);
         document.getElementById("btnModalPagoServicios")?.addEventListener("click", realizarPago);

@@ -23,12 +23,14 @@ document.addEventListener('DOMContentLoaded', function () {
         return true;
     }
 
+    // Muestra las transacciones en pantalla filtradas por tipo
     function mostrarTransacciones(filtro = 'todas') {
+        // Escucha cambios en el selector de filtro y actualiza la lista
         if (!listaTransaccionesDiv) {
             console.error("Elemento listaTransacciones no encontrado.");
             return;
         }
-
+        // Carga inicial del historial al abrir la página
         if (!verificarDependenciasStorage()) {
             listaTransaccionesDiv.innerHTML = '<p class="text-center text-danger fw-bold">No se pudo cargar el historial. Falta el modulo de almacenamiento o sus funciones no son accesibles.</p>';
             return;
